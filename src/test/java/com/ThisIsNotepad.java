@@ -19,19 +19,7 @@ public class ThisIsNotepad {
 
 
 
-    @Test
-    public void waitTest() throws Exception {
-        Awaitility.await().atMost(5, TimeUnit.SECONDS).until(() -> this.getStatus() == 200);
-    }
 
-    public int getStatus() {
-        return given()
-                .accept(ContentType.JSON)
-                .get("https://dummyjson.com/products/category/")
-                .then()
-                .extract()
-                .statusCode();
-    }
     void notes(){
         /*
         ExclusionStrategy[] exclusionStrategies = new ExclusionStrategy[] {

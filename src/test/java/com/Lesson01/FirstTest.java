@@ -1,4 +1,4 @@
-package com;
+package com.Lesson01;
 
 import io.restassured.RestAssured;
 import io.restassured.specification.ResponseSpecification;

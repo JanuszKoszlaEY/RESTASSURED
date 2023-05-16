@@ -1,4 +1,4 @@
-package com.userJourney;
+package com.userJourney.POST;
 
 import com.configuration.RequestSpec;
 import com.endpoints.Endpoints;
@@ -9,8 +9,8 @@ import java.util.Map;
 
 import static io.restassured.RestAssured.given;
 
-public class CreateBooking {
-    public Response createBooking() {
+public class CreateBookingFromJSONObject {
+    public static Response createBooking() {
         // Create JSON body
 
 

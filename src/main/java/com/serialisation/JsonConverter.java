@@ -7,6 +7,7 @@ import java.lang.reflect.Type;
 
 public class JsonConverter {
 // It IS NOT NECESSARY IN REST ASSURED
+//IT is enough when GSON is added to POM file
 
 //  private static final Gson GSON_Builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation()
 //      .serializeNulls().setPrettyPrinting().create();

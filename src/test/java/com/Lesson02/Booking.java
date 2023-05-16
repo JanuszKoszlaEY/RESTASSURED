@@ -1,4 +1,4 @@
-package com;
+package com.Lesson02;
 
 import com.commonData.CommonData;
 import com.endpoints.Endpoints;
@@ -23,7 +23,6 @@ public class Booking {
         RestAssured.useRelaxedHTTPSValidation();
         Response response = RestAssured.get(PropertyManager.getInstance().getURL() + Endpoints.booking);
         response.print();
-
 
         Assert.assertEquals(response.getStatusCode(),HttpStatus.SC_OK,"Response status code is not 200");
 

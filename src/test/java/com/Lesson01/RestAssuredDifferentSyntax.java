@@ -1,4 +1,4 @@
-package com;
+package com.Lesson01;
 
 import com.endpoints.Endpoints;
 import com.utilities.PropertyManager;
@@ -73,11 +73,11 @@ public class RestAssuredDifferentSyntax {
             .relaxedHTTPSValidation()
             .baseUri(PropertyManager.getInstance().getURL())
             .basePath(Endpoints.booking)
+            .log().all()
         .when()
             .get()
         .then()
-            .assertThat().statusCode(HttpStatus.SC_OK)
-            .log().all();
+            .assertThat().statusCode(HttpStatus.SC_OK);
 
     }
 
@@ -87,7 +87,7 @@ public class RestAssuredDifferentSyntax {
         RestAssured.baseURI = "https://dummyjson.com/";
         RestAssured.basePath = "products/category/";
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.ALL);
-        RequestSpecification httpRequestConfig = given().relaxedHTTPSValidation().log().all();
+        RequestSpecification httpRequestConfig = given().relaxedHTTPSValidation();
         Response response = httpRequestConfig.request(Method.GET, "smartphones");
 
 //        Response response = httpRequestConfig.get("smartphones");
