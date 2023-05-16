@@ -1,27 +1,20 @@
 package com.configuration;
 
-import com.commonData.CommonData;
-import com.endpoints.Endpoints;
 import com.google.common.collect.ImmutableMap;
 import com.utilities.PropertyManager;
 import io.restassured.filter.Filter;
-import io.restassured.filter.log.LogDetail;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.filter.log.ResponseLoggingFilter;
-import org.json.JSONObject;
-import org.testng.annotations.BeforeMethod;
 
-import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-public class RestSpecification {
+public class RequestSpec {
 	private static RequestSpecBuilder spec;
 
 	public static final List<Filter> FILTERS =

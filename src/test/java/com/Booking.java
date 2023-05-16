@@ -16,11 +16,6 @@ import java.util.List;
 
 public class Booking {
 
-//    @BeforeTest
-//    public void setup() {
-//        RestAssured.given().baseUri(CommonData.url);
-//
-//    }
     @Test
     public void getBookingIdsTest(){
         RestAssured.useRelaxedHTTPSValidation();

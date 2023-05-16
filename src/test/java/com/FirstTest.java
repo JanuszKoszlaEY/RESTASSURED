@@ -5,16 +5,16 @@ import io.restassured.specification.ResponseSpecification;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.expect;
+import static io.restassured.RestAssured.*;
 
 public class FirstTest {
 
     @Test
-    public void FirstTest() throws InterruptedException {
-        RestAssured.baseURI ="https://restful-booker.herokuapp.com/booking";
-        RestAssured.given().log().all().get();
+    public void FirstTest() {
+        baseURI ="https://restful-booker.herokuapp.com/booking";
+        useRelaxedHTTPSValidation();
+        given().log().all().get();
 
-
-
-        expect().statusCode(200).when().get();
+        expect().log().all().statusCode(200).when().get();
     }
 }

@@ -1,31 +1,31 @@
 package com.userJourney;
 
-import com.configuration.RestSpecification;
+import com.configuration.RequestSpec;
 import com.endpoints.Endpoints;
-import io.restassured.RestAssured;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import io.restassured.specification.RequestSpecification;
 import org.json.JSONObject;
 
+import java.util.Map;
+
+import static io.restassured.RestAssured.given;
+
 public class CreateBooking {
-    protected Response createBooking() {
+    public Response createBooking() {
         // Create JSON body
+
+
+        JSONObject bookingDates = new JSONObject(Map.of("checkin", "2020-03-25", "checkout", "2020-03-27"));
         JSONObject body = new JSONObject();
-        body.put("firstname", "Dmitry");
-        body.put("lastname", "Shyshkin");
-        body.put("totalprice", 150);
+        body.put("firstname", "Janusz");
+        body.put("lastname", "Kowalski");
+        body.put("totalprice", 200);
         body.put("depositpaid", false);
+        body.put("bookingdates", bookingDates);
+        body.put("additionalneeds", "Food");
 
-        JSONObject bookingdates = new JSONObject();
-        bookingdates.put("checkin", "2020-03-25");
-        bookingdates.put("checkout", "2020-03-27");
-        body.put("bookingdates", bookingdates);
-        body.put("additionalneeds", "Baby crib");
-
+        Response response = given(RequestSpec.get()).body(body.toString()).post(Endpoints.booking);
         // Get response
-        Response response = RestAssured.given(RestSpecification.get()).contentType(ContentType.JSON).body(body.toString())
-                .post(Endpoints.booking);
+
         return response;
     }
 }

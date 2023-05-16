@@ -1,7 +1,6 @@
 package com.DTO;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,13 +11,24 @@ import lombok.Setter;
 @Getter
 @Setter
 //@Builder
-public class BookingDatesDto {
-    @SerializedName("checkin")
-    @Expose
-    private String checkin;
+//public class BookingDatesDto {
+//    @SerializedName("checkin")
+//    @Expose
+//    private String checkin;
+//
+//    @SerializedName("checkout")
+//    @Expose
+//    private String checkout;
+//    @Override
+//    public String toString() {
+//        return "Bookingdates [checkin=" + checkin + ", checkout=" + checkout + "]";
+//    }
+//}
 
-    @SerializedName("checkout")
-    @Expose
+
+public class BookingDatesDto {
+
+    private String checkin;
     private String checkout;
     @Override
     public String toString() {
