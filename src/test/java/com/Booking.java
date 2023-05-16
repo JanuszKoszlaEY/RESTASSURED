@@ -14,6 +14,8 @@ import org.testng.asserts.SoftAssert;
 import javax.swing.border.SoftBevelBorder;
 import java.util.List;
 
+import static com.commonData.CommonData.URL;
+
 public class Booking {
 
     @Test
@@ -32,7 +34,7 @@ public class Booking {
     @Test
     public void getBookingTest(){
         RestAssured.useRelaxedHTTPSValidation();
-        Response response = RestAssured.get(PropertyManager.getInstance().getURL() + Endpoints.booking + "/1");
+        Response response = RestAssured.get(URL + Endpoints.booking + "/1");
         response.print();
 
         Assert.assertEquals(response.getStatusCode(), HttpStatus.SC_OK,"Response status code is not 200");

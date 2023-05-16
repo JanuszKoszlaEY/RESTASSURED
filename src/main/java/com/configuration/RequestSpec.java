@@ -14,9 +14,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import static com.commonData.CommonData.LOG_LEVEL;
+import static com.commonData.CommonData.URL;
+
 public class RequestSpec {
 	private static RequestSpecBuilder spec;
-
+	private static String ALL = "ALL";
 	public static final List<Filter> FILTERS =
 			Arrays.asList(new RequestLoggingFilter(), new ResponseLoggingFilter());
 	public static final Map<String, String> COMMON_HEADERS =
@@ -24,14 +27,15 @@ public class RequestSpec {
 			.put("accept", "application/json")
 			.put("accept-Encoding", "gzip, deflate, br")
 			.build();
+
 	public static RequestSpecification get() {
 		spec = new RequestSpecBuilder();
-		if (PropertyManager.getInstance().getLog().toLowerCase().contains("all")){
+		if (LOG_LEVEL.contains(ALL)){
 			spec.addFilters(FILTERS);
 //			spec.log(LogDetail.ALL);
 		}
 			spec.setRelaxedHTTPSValidation()
-				.setBaseUri(PropertyManager.getInstance().getURL())
+				.setBaseUri(URL)
 				.addHeaders(COMMON_HEADERS)
 				.setContentType(ContentType.JSON);
 

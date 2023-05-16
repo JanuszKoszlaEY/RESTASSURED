@@ -1,5 +1,8 @@
 package com.commonData;
 
+import com.utilities.PropertyManager;
+
 public interface CommonData {
-//    String url = "https://restful-booker.herokuapp.com/";
+    String URL = PropertyManager.getInstance().getURL();
+    String LOG_LEVEL = PropertyManager.getInstance().getLog().toUpperCase();
 }
