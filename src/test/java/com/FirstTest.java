@@ -14,7 +14,12 @@ public class FirstTest {
         baseURI ="https://restful-booker.herokuapp.com/booking";
         useRelaxedHTTPSValidation();
         given().log().all().get();
+    }
 
+    @Test
+    public void SecondTest() {
+        baseURI ="https://restful-booker.herokuapp.com/booking";
+        useRelaxedHTTPSValidation();
         expect().log().all().statusCode(200).when().get();
     }
 }
