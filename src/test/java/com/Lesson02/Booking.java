@@ -21,31 +21,31 @@ public class Booking {
     @Test
     public void getBookingIdsTest(){
         RestAssured.useRelaxedHTTPSValidation();
-        Response response = RestAssured.get(PropertyManager.getInstance().getURL() + Endpoints.booking);
-        response.print();
+        Response response = RestAssured.get(PropertyManager.getInstance().getURL() + Endpoints.booking);  // URL from parameter file; path from interface
+        response.print();   // there is no log so I print response
 
         Assert.assertEquals(response.getStatusCode(),HttpStatus.SC_OK,"Response status code is not 200");
 
-        List<Integer> bookingIds = response.jsonPath().getList("bookingIds");
+        List<Integer> bookingIds = response.jsonPath().getList("bookingIds");  //jsonPath used
         Assert.assertFalse(bookingIds.isEmpty(),"No booking ids found");
     }
 
     @Test
     public void getBookingTest(){
         RestAssured.useRelaxedHTTPSValidation();
-        Response response = RestAssured.get(URL + Endpoints.booking + "/1");
-        response.print();
+        Response response = RestAssured.get(URL + Endpoints.booking + "/1");  // parameter as 'enum'
+        response.print(); // there is no log so I print response
 
         Assert.assertEquals(response.getStatusCode(), HttpStatus.SC_OK,"Response status code is not 200");
-        String foundFirstName = response.jsonPath().getString("firstname");
-        String foundLastName = response.jsonPath().getString("lastname");
-        String foundCheckIn = response.jsonPath().getString("bookingdates.checkin");
+        String foundFirstName = response.jsonPath().getString("firstname");             //jsonPath used
+        String foundLastName = response.jsonPath().getString("lastname");               //jsonPath used
+        String foundCheckIn = response.jsonPath().getString("bookingdates.checkin");    //jsonPath used
         SoftAssert softAssert = new SoftAssert();
 
-        softAssert.assertEquals(foundFirstName,"Sally");
+        softAssert.assertEquals(foundFirstName,"Sally[FAIL]"); // to fail
         softAssert.assertEquals(foundLastName,"Brown");
         softAssert.assertFalse(foundCheckIn.isEmpty());
-
+        softAssert.assertAll();
     }
 
 }

@@ -48,7 +48,7 @@ public class RestAssuredDifferentSyntax {
             .relaxedHTTPSValidation()
             .get("https://restful-booker.herokuapp.com/ping")
         .then()
-            .assertThat().statusCode(HttpStatus.SC_CREATED)
+            .assertThat().statusCode(HttpStatus.SC_CREATED)   //http code from interface
             .log().all();
 
     }
@@ -61,7 +61,7 @@ public class RestAssuredDifferentSyntax {
         .when()
             .get("booking")
         .then()
-            .assertThat().statusCode(HttpStatus.SC_OK)
+            .assertThat().statusCode(HttpStatus.SC_OK)   //http code from interface
             .log().all();
 
     }
@@ -77,7 +77,7 @@ public class RestAssuredDifferentSyntax {
         .when()
             .get()
         .then()
-            .assertThat().statusCode(HttpStatus.SC_OK);
+            .assertThat().statusCode(HttpStatus.SC_OK);   //http code from interface
 
     }
 
@@ -88,13 +88,28 @@ public class RestAssuredDifferentSyntax {
         RestAssured.basePath = "products/category/";
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.ALL);
         RequestSpecification httpRequestConfig = given().relaxedHTTPSValidation();
+        Response response = httpRequestConfig.request(Method.GET, "smartphones"); //another form of request
+
+//        Response response = httpRequestConfig.get("smartphones");
+
+        String responseBody = response.toString(); // there is no log so I print response
+        System.out.println("response: " + responseBody);
+        Assert.assertEquals(response.getStatusCode(), HttpStatus.SC_OK);   //http code from interface
+    }
+
+    @Test
+    void getSmartphones2() {
+
+        RestAssured.baseURI = "https://dummyjson.com/";
+        RestAssured.basePath = "products/category/";
+        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails(LogDetail.ALL); // full log when fails
+        RequestSpecification httpRequestConfig = given().relaxedHTTPSValidation();
         Response response = httpRequestConfig.request(Method.GET, "smartphones");
 
 //        Response response = httpRequestConfig.get("smartphones");
 
-        String responseBody = response.toString();
-        System.out.println("response: " + responseBody);
-        Assert.assertEquals(response.getStatusCode(), HttpStatus.SC_OK);
+        response.then().statusCode(HttpStatus.SC_PROCESSING);   // to fail
+
     }
 
 

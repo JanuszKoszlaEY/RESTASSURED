@@ -11,11 +11,7 @@ import static io.restassured.RestAssured.given;
 
 public class CreateBooking {
     public static Response createBooking(BookingDto bookingDto) {
-        return given(
-                    RequestSpec.get()
-                    .body(bookingDto),
-                    ResponseSpec.get()
-                )
-                .post(booking);
+        return given(RequestSpec.get().body(bookingDto),ResponseSpec.get())
+                    .post(booking);
     }
 }

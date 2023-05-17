@@ -22,7 +22,7 @@ public class CreateBookingPOJO2Test extends BaseTest {
     @Test
     public void createBookingWithPOJO5Test() {
         BookingDto booking = GetBooking.get();
-        ValidatableResponse toValidate = CreateBooking.createBooking(booking).then();
-        Validations.Validate(toValidate);
+        ValidatableResponse toValidate = CreateBooking.createBooking(booking).then();  // request in separate class
+        Validations.Validate(toValidate);  //separate validation
     }
 }

@@ -12,10 +12,9 @@ import static io.restassured.RestAssured.given;
 public class RepeatRequestTest extends BaseTest {
 
     @Test
-    public void repeatRequestTest() throws Exception{
+    public void repeatRequestTest(){
         Awaitility.await().atMost(5, TimeUnit.SECONDS).until(() -> this.getStatus() == 200);
     }
-
     public int getStatus() {
         return given()
                 .accept(ContentType.JSON)

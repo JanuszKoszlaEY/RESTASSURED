@@ -7,6 +7,9 @@ import com.endpoints.Endpoints;
 import com.testData.GetBooking;
 import com.userJourney.POST.CreateBooking;
 import com.validations.Validations;
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.parsing.Parser;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import org.apache.http.HttpResponse;
@@ -23,7 +26,7 @@ public class CreateBookingPOJO2Test extends BaseTest {
     public void createBookingWithPOJO3Test() {
 
         BookingDto booking = GetBooking.get();
-        Response response = given(RequestSpec.get())  //wait for response configuration
+        Response response = given(RequestSpec.get())  //wait for response added in root class
             .body(booking)
             .post(Endpoints.booking);
 
@@ -41,13 +44,15 @@ public class CreateBookingPOJO2Test extends BaseTest {
     public void createBookingWithPOJO4Test() {
 
         BookingDto booking = GetBooking.get();
-
-        given(RequestSpec.get())  //wait for response configuration
+    //    RestAssured.defaultParser = Parser.JSON;    // change parser
+        given(RequestSpec.get())  //wait for response added in root class
             .body(booking)
             .post(Endpoints.booking)
         .then()
+       //     .parser(String.valueOf(ContentType.JSON),Parser.JSON)
             .statusCode(HttpStatus.SC_OK)
-            .body("booking.firstname", Matchers.equalToIgnoringCase(booking.getFirstname()));
+            .body("booking.firstname", Matchers.equalToIgnoringCase(booking.getFirstname()));  //verification of body by RestAssured functionality
+                                                                                                  // and jpath
 
     }
 
