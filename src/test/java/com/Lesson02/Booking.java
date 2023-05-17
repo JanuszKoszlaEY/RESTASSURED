@@ -42,7 +42,7 @@ public class Booking {
         String foundCheckIn = response.jsonPath().getString("bookingdates.checkin");    //jsonPath used
         SoftAssert softAssert = new SoftAssert();
 
-        softAssert.assertEquals(foundFirstName,"Sally[FAIL]"); // to fail
+        softAssert.assertEquals(foundFirstName,"Sally"); // to fail
         softAssert.assertEquals(foundLastName,"Brown");
         softAssert.assertFalse(foundCheckIn.isEmpty());
         softAssert.assertAll();

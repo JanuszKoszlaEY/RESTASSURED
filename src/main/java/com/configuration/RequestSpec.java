@@ -36,6 +36,7 @@ public class RequestSpec {
 		}
 			spec.setRelaxedHTTPSValidation()
 				.setBaseUri(URL)
+				.setBasePath("")
 				.addHeaders(COMMON_HEADERS)
 				.setContentType(ContentType.JSON);
 

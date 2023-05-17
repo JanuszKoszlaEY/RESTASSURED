@@ -1,26 +1,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="TestSuite" verbose="1" parallel="tests" thread-count="4">
-	<listeners>
-		<listener class-name="base.TestListener"></listener>
-	</listeners>
+<suite name="TestSuiteForAll" verbose="1" parallel="tests" thread-count="4">
+
 	
-	<test name="PositiveLogInTest-CH">
-		<parameter name="browser" value="chrome"></parameter>
-
-		<classes>
-			<class name="LoginTest" />
-		</classes>
-	</test>
-
-	<test name="NegativeUsernameTest-CH">
-		<parameter name="username" value="incorrectUsername"></parameter>
-		<parameter name="password" value="SuperSecretPassword!"></parameter>
-		<parameter name="expectedMessage" value="Your username is invalid!"></parameter>
-		<parameter name="browser" value="chrome"></parameter>
-		<classes>
-			<class name="NegativeLogInTests"></class>
-		</classes>
+	<test name="RestAssuredTests">
+		<packages>
+			<package name=".*"></package>
+		</packages>
 	</test>
 	
 </suite>
