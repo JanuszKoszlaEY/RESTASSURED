@@ -18,6 +18,7 @@ import org.hamcrest.Matchers;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+
 import static io.restassured.RestAssured.given;
 
 public class CreateBookingPOJO2Test extends BaseTest {
@@ -38,6 +39,7 @@ public class CreateBookingPOJO2Test extends BaseTest {
         Assert.assertEquals(response.jsonPath().get("booking.firstname"),booking.getFirstname()); // getData by jsonPath
         //dataColumns[0].id
         //[0].userId
+
     }
 
     @Test
@@ -49,7 +51,7 @@ public class CreateBookingPOJO2Test extends BaseTest {
             .body(booking)
             .post(Endpoints.booking)
         .then()
-       //     .parser(String.valueOf(ContentType.JSON),Parser.JSON)
+            .parser(String.valueOf(ContentType.JSON),Parser.JSON)
             .statusCode(HttpStatus.SC_OK)
             .body("booking.firstname", Matchers.equalToIgnoringCase(booking.getFirstname()));  //verification of body by RestAssured functionality
                                                                                                   // and jpath

@@ -19,7 +19,8 @@ public class CreateBookingPOJOTest {
       @Test
     public void createBookingWithPOJO1Test() {
         // Create body using POJOs
-        BookingDto booking = GetBooking.get();       // get data from using dto
+        BookingDto booking = GetBooking.get();
+        // get data from using dto
         Response response = given(RequestSpec.get()) //request config and logging added from separate class
             .body(booking)                           //serialisation
             .post(Endpoints.booking);

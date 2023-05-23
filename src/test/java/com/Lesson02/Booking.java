@@ -5,6 +5,7 @@ import com.endpoints.Endpoints;
 
 import com.utilities.PropertyManager;
 import io.restassured.RestAssured;
+import io.restassured.filter.log.LogDetail;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.testng.Assert;
@@ -33,6 +34,7 @@ public class Booking {
     @Test
     public void getBookingTest(){
         RestAssured.useRelaxedHTTPSValidation();
+
         Response response = RestAssured.get(URL + Endpoints.booking + "/1");  // parameter as 'enum'
         response.print(); // there is no log so I print response
 
@@ -40,7 +42,7 @@ public class Booking {
         String foundFirstName = response.jsonPath().getString("firstname");             //jsonPath used
         String foundLastName = response.jsonPath().getString("lastname");               //jsonPath used
         String foundCheckIn = response.jsonPath().getString("bookingdates.checkin");    //jsonPath used
-        SoftAssert softAssert = new SoftAssert();
+        SoftAssert softAssert = new SoftAssert();  //SOFT ASSERT EXAMPLE
 
         softAssert.assertEquals(foundFirstName,"Sally"); // to fail
         softAssert.assertEquals(foundLastName,"Brown");

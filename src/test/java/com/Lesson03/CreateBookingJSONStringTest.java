@@ -4,6 +4,7 @@ import com.configuration.RequestSpec;
 import com.endpoints.Endpoints;
 import com.testData.JsonPayloads;
 import com.userJourney.POST.CreateBookingFromJSONObject;
+import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.testng.Assert;
@@ -17,6 +18,7 @@ public class CreateBookingJSONStringTest {
 
     @Test
     public void createBookingWithModifiedJSONObj() {
+
         String  jsonString = JsonPayloads.myJsonObject();
         given(RequestSpec.get())         //request config added from separate class
             .body(jsonString)
@@ -31,9 +33,9 @@ public class CreateBookingJSONStringTest {
         String  jsonString = JsonPayloads.jsonPureString();
         given(RequestSpec.get())         //request config and logging added from separate class
             .body(jsonString)
-            .when()
+        .when()
             .post(Endpoints.booking)
-            .then()
+        .then()
             .statusCode(HttpStatus.SC_OK);
     }
 
